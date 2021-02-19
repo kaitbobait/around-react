@@ -1,6 +1,7 @@
 
 import '../index.css';
 import Header from './Header.js';
+import Footer from './Footer.js';
 
 
 function App() {
@@ -31,9 +32,7 @@ function App() {
           </section>
         </main>
 
-        <footer className="footer">
-          <p className="footer__copyright">&copy;2020 Around The U.S.</p>
-        </footer>
+        < Footer />
         <div className="popup popup_edit-profile">
           <div className="popup__container">
             <button className="popup__close-button popup__close-button_profile" aria-label="Close" type="button"></button>

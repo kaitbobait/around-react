@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 
+
 function App() {
   return (
     <div className="page__content">
@@ -36,10 +37,10 @@ function App() {
         <div className="popup__container">
           <button className="popup__close-button popup__close-button_profile" aria-label="Close" type="button"></button>
           <h2 className="popup__intro">Edit profile</h2>
-          <form className="form popup__form popup__form-profile" action="#" novalidate >
-            <input className="popup__input popup__input_text_name" id="input_text_name" type="text" name="name" placeholder="name" value="name" minlength="2" maxlength="40" required />
+          <form className="form popup__form popup__form-profile" action="#" noValidate >
+            <input className="popup__input popup__input_text_name" id="input_text_name" type="text" name="name" placeholder="name" value="name" minLength="2" maxLength="40" required />
             <span className="popup__input-error" id="input_text_name-error"></span>
-            <input className="popup__input popup__input_text_title" id="input_text_title" type="text" name="about" placeholder="Occupation" value="about" minlength="2" maxlength="200" required />
+            <input className="popup__input popup__input_text_title" id="input_text_title" type="text" name="about" placeholder="Occupation" value="about" minLength="2" maxLength="200" required />
             <span className="popup__input-error" id="input_text_title-error"></span>
             <button className="popup__save-button" type="submit">Save</button>
           </form>
@@ -49,10 +50,10 @@ function App() {
         <div className="popup__container">
           <button className="popup__close-button popup__close-button_places" aria-label="Close" type="button"></button>
           <h2 className="popup__intro">New Place</h2>
-          <form className="form popup__form popup__form-places" action="#" novalidate>
-            <input className="popup__input popup__input_text_image-title" id="popup__input_text_image-title" type="text" name="name" placeholder="Title" minlength = "2" maxlength = "30" required />
+          <form className="form popup__form popup__form-places" action="#" noValidate>
+            <input className="popup__input popup__input_text_image-title" id="popup__input_text_image-title" type="text" name="name" placeholder="Title" minLength = "2" maxLength = "30" required />
             <span className="popup__input-error" id="popup__input_text_image-title-error"></span>
-            <input className="popup__input popup__input_text_image" id="popup__input_text_image" type="url" name="link" placeholder="Image link" minlength = "" maxlength = "" required />
+            <input className="popup__input popup__input_text_image" id="popup__input_text_image" type="url" name="link" placeholder="Image link" minLength = "" maxLength = "" required />
             <span className="popup__input-error" id="popup__input_text_image-error"></span>
             <button className="popup__save-button" type="submit">Save</button>
           </form>
@@ -73,8 +74,8 @@ function App() {
         <div className="popup__container">
           <button className="popup__close-button popup__close-button_avatar" aria-label="Close" type="button"></button>
           <h2 className="popup__intro">Change profile picture</h2>
-          <form className="form popup__form popup__form-avatar" action="#" novalidate>
-            <input className="popup__input popup__input_avatar" id="popup__input_avatar" type="url" name="link" placeholder="Image link" minlength = "" maxlength = "" required />
+          <form className="form popup__form popup__form-avatar" action="#" noValidate>
+            <input className="popup__input popup__input_avatar" id="popup__input_avatar" type="url" name="link" placeholder="Image link" minLength = "" maxLength = "" required />
             <span className="popup__input-error" id="popup__input_avatar-error"></span>
             <button className="popup__save-button" type="submit">Save</button>
           </form>

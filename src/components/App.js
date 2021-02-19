@@ -1,15 +1,14 @@
-import logo from '../images/logo-svg.svg';
+
 import '../index.css';
+import Header from './Header.js';
 
 
 function App() {
   return (
     <body class="page">
       <div className="page__content">
-        <header className="header">
-          {/* <img className="logo" src="<%=require("./images/logo-svg.svg")%>" alt="Around logo"> */}
-          <img className="logo" src={logo} alt="Around logo" />
-        </header>
+        < Header />
+        
         <main className="main">
           <section className="profile">
             <div className="profile__img"></div>

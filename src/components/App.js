@@ -3,6 +3,7 @@ import '../index.css';
 import Header from './Header.js';
 import Main from './Main.js';
 import Footer from './Footer.js';
+import PopupWithForm from './PopupWithForm.js';
 
 
 function App() {
@@ -12,7 +13,47 @@ function App() {
         < Header />
         < Main />
         < Footer />
-        <div className="popup popup_edit-profile">
+
+        {/* Profile Edit Popup */}
+        <PopupWithForm name="profile-edit" title="Edit Profile">
+          <input className="popup__input popup__input_text_name" id="input_text_name" type="text" name="profile-edit" placeholder="name" value="name" minLength="2" maxLength="40" required />
+          <span className="popup__input-error" id="input_text_name-error"></span>
+          <input className="popup__input popup__input_text_title" id="input_text_title" type="text" name="profile-edit" placeholder="Occupation" value="about" minLength="2" maxLength="200" required />
+          <span className="popup__input-error" id="input_text_title-error"></span>
+        </PopupWithForm>
+
+        {/* Add Places Popup */}
+        <PopupWithForm name="places-edit" title="New Place">
+          <input className="popup__input popup__input_text_image-title" id="popup__input_text_image-title" type="text" name="places-edit" placeholder="Title" minLength = "2" maxLength = "30" required />
+          <span className="popup__input-error" id="popup__input_text_image-title-error"></span>
+          <input className="popup__input popup__input_text_image" id="popup__input_text_image" type="url" name="places-edit" placeholder="Image link" minLength = "" maxLength = "" required />
+          <span className="popup__input-error" id="popup__input_text_image-error"></span>
+        </PopupWithForm>
+        
+        {/* Edit Avatar Popup */}
+        <PopupWithForm name="avatar-edit" title="Change profile picture">
+          <input className="popup__input popup__input_avatar" id="popup__input_avatar" type="url" name="avatar-edit" placeholder="Image link" minLength = "" maxLength = "" required />
+          <span className="popup__input-error" id="popup__input_avatar-error"></span>
+        </PopupWithForm>
+
+        {/* Delete Popup  - doesn't work yet - need cards*/}
+        <PopupWithForm name="delete-places" title="Are you sure?">
+        </PopupWithForm>
+
+
+
+        {/* Image Popup - doesn't work yet
+        <PopupWithForm name="image-popup">
+          <div className="popup_container_image-text">
+            <img className = "popup__image" />
+            <h3 className ="popup__image-title"></h3>
+          </div>
+        </PopupWithForm> */}
+
+        
+       
+        
+        {/* <div className="popup popup_edit-profile">
           <div className="popup__container">
             <button className="popup__close-button popup__close-button_profile" aria-label="Close" type="button"></button>
             <h2 className="popup__intro">Edit profile</h2>
@@ -24,8 +65,8 @@ function App() {
               <button className="popup__save-button" type="submit">Save</button>
             </form>
           </div>
-        </div>
-        <div className="popup popup_edit-places">
+        </div> */}
+        {/* <div className="popup popup_edit-places">
           <div className="popup__container">
             <button className="popup__close-button popup__close-button_places" aria-label="Close" type="button"></button>
             <h2 className="popup__intro">New Place</h2>
@@ -37,9 +78,9 @@ function App() {
               <button className="popup__save-button" type="submit">Save</button>
             </form>
           </div>
-        </div>
+        </div> */}
 
-          <div className = "popup popup_open_image popup_image-large">
+          {/* <div className = "popup popup_open_image popup_image-large">
             <div className = "popup__container_image">
               <button className="popup__close-button popup__close-button_images" aria-label="Close" type="button"></button>
               <div className="popup_container_image-text">
@@ -47,9 +88,9 @@ function App() {
                 <h3 className ="popup__image-title"></h3>
               </div>
             </div>
-          </div>
+          </div> */}
 
-        <div className = "popup popup__edit-avatar">
+        {/* <div className = "popup popup__edit-avatar">
           <div className="popup__container">
             <button className="popup__close-button popup__close-button_avatar" aria-label="Close" type="button"></button>
             <h2 className="popup__intro">Change profile picture</h2>
@@ -59,15 +100,15 @@ function App() {
               <button className="popup__save-button" type="submit">Save</button>
             </form>
           </div>
-        </div>
+        </div> */}
 
-        <div className = "popup popup__delete">
+        {/* <div className = "popup popup__delete">
           <div className = "popup__container">
             <button className = "popup__close-button popup__close-button_delete"></button>
             <h2 className = "popup__delete_header">Are you sure?</h2>
             <button className = "popup__save-button popup__save-button_delete">Yes</button>
           </div>
-        </div>
+        </div> */}
       
         <template id = "place-template">
           <li className="places__item">

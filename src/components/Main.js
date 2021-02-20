@@ -1,22 +1,6 @@
 
 function Main() {
 
-  function handleEditAvatarClick() {
-    document.querySelector(".popup__edit-avatar").classList.add("popup_open");
-    console.log('hello');
-  }
-
-  function handleEditProfileClick() {
-     document.querySelector(".popup_edit-profile").classList.add("popup_open");
-    
-    console.log('profile click');
-    // console.log(document);
-  }
-
-  function handleAddPlaceClick() {
-    document.querySelector(".popup_edit-places").classList.add("popup_open");
-    console.log('add place')
-  }
 
   return(
     <main className="main">

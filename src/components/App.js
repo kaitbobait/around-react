@@ -1,4 +1,5 @@
 
+import React from 'react';
 import '../index.css';
 import Header from './Header.js';
 import Main from './Main.js';
@@ -7,15 +8,50 @@ import PopupWithForm from './PopupWithForm.js';
 
 
 function App() {
+
+  const [isEditProfilePopupOpen, setisEditProfilePopupOpen] = React.useState(false);
+
+  function handleEditProfileClick() {
+    document.querySelector(".popup_type_profile-edit").classList.add("popup_open")
+    setisEditProfilePopupOpen(true);
+  }
+
+  
+
+  const [isAddPlacePopupOpen, setisisAddPlacePopupOpen] = React.useState(false);
+
+  function handleAddPlaceClick() {
+    document.querySelector(".popup_type_places-edit").classList.add("popup_open");
+    setisisAddPlacePopupOpen(true);
+  }
+
+  const [isEditAvatarPopupOpen, setisEditAvatarPopupOpen] = React.useState(false);
+
+  function handleEditAvatarClick() {
+    document.querySelector(".popup_type_avatar-edit").classList.add("popup_open");
+    setisEditAvatarPopupOpen(true);
+  }
+
+  function handleCardClick() {
+    //add later
+  }
+  
+
+
   return (
     <div class="page">
       <div className="page__content">
         < Header />
-        < Main />
+        < Main 
+            onEditProfile={handleEditProfileClick}
+            onAddPlace={handleAddPlaceClick}
+            onEditAvatar={handleEditAvatarClick}
+            onCardClick={handleCardClick}
+          />
         < Footer />
 
         {/* Profile Edit Popup */}
-        <PopupWithForm name="profile-edit" title="Edit Profile">
+        <PopupWithForm name="profile-edit" title="Edit Profile" isOpen={handleEditProfileClick}>
           <input className="popup__input popup__input_text_name" id="input_text_name" type="text" name="profile-edit" placeholder="name" value="name" minLength="2" maxLength="40" required />
           <span className="popup__input-error" id="input_text_name-error"></span>
           <input className="popup__input popup__input_text_title" id="input_text_title" type="text" name="profile-edit" placeholder="Occupation" value="about" minLength="2" maxLength="200" required />
@@ -31,7 +67,7 @@ function App() {
         </PopupWithForm>
         
         {/* Edit Avatar Popup */}
-        <PopupWithForm name="avatar-edit" title="Change profile picture">
+        <PopupWithForm name="avatar-edit" title="Change profile picture" >
           <input className="popup__input popup__input_avatar" id="popup__input_avatar" type="url" name="avatar-edit" placeholder="Image link" minLength = "" maxLength = "" required />
           <span className="popup__input-error" id="popup__input_avatar-error"></span>
         </PopupWithForm>

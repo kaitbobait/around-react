@@ -7,7 +7,7 @@ import Footer from './Footer.js';
 
 function App() {
   return (
-    <body class="page">
+    <div class="page">
       <div className="page__content">
         < Header />
         < Main />
@@ -84,7 +84,7 @@ function App() {
         </template>
         {/* <!-- <script type = "module" src="scripts/index.js"></script> --> */}
       </div>
-    </body>
+    </div>
   );
 }
 

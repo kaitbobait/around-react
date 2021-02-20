@@ -1,3 +1,69 @@
+
+# Project 10: Around The U.S.
+
+### Description
+
+* This is a site that you'll be able to edit your name and occupation. You will be able to add images and titles do the site, as well like "like" any photo.
+
+### Technologies
+
+**In this site, we are using:**
+
+* HTML
+* CSS
+* Javascript
+* React
+* Webpack
+* BEM methodology
+
+
+### Overview
+
+* Figma
+* Images
+
+**Figma**
+
+* [Link to the project in Figma](https://www.figma.com/file/mUgu8OSHWE0M6p6vfwmdu9/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
+
+**Github Pages**
+* [Link to my project on Github Pages] (https://kaitbobait.github.io/web_project_4/ )
+
+**Images**
+
+The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
+
+Have fun with JavaScript!
+
+### To Do List:
+
+## Setting up Popups
+
+**setting up the popup event handlers**
+* How to get to work with document...?
+
+**Move common popup component**
+* Use for the following Popups:
+- Edit Profile
+- New Place
+- Update profile picture
+- Are you sure? 
+* All common markup should be placed inside the new component
+* only titles and the form identifiers (in the form of strings) should be passed from outside
+the component
+* Add the corresponding TITLE and NAME props, then substitute their values in JSX
+* to correctly substitude NAME into the CSS class of the container user this syntax: 
+className={`popup popup_type_${props.name}`}  
+* So as above, I need to change the name of some of the HTML CODE to match the new name structure
+* The NAME props will be used for the name of the CSS class container AND the NAME attribute of the form tag
+* will need to update NAME attributes on forms
+
+**Move the ImagePopup component**
+* This component has no props or nested content yet
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

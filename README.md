@@ -81,6 +81,7 @@ className={`popup popup_type_${props.name}`}
 * Repeat previous steps, but this time to make the popups close
 * The new onClose prop of the PopupWithForm component and its handler will help you. 
 * The handler should be inside the App and should be called closeAllPopups()
+* Closes with the close button but not with ESC key or click on background
 
 
 

@@ -6,9 +6,9 @@ import api from '../utils/api.js';
 function Main(props) {
 
   const [userName, setUserName] = React.useState();
-  
   const [userDescription, setUserDescription] = React.useState();
   const [userAvatar, setUserAvatar] = React.useState();
+  const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
     api.getUserInfo()
@@ -17,8 +17,21 @@ function Main(props) {
         setUserDescription(res.about);
         setUserAvatar(res.avatar);
       })
+    }, [])
 
-  })
+  
+      React.useEffect(() => {
+        
+          api.getInitialCards()
+            .then((res) => {
+              console.log(res);
+              setCards([...cards, ...res]);
+            
+          })
+        
+        }, []);
+      
+         
 
   return(
     <main className="main">
@@ -35,10 +48,28 @@ function Main(props) {
             </div>
             <button className="profile__add" aria-label="add" type="button" onClick={props.onAddPlace}></button>
           </section>
-          {/* <!-- popup section after created below --> */}
+          
           <section className="places">
             <ul className="places__list">
               
+                {cards.map((card, i) => (
+                  
+                  <>
+                    <li className="places__item" key={i}>
+                    <img className="places__img" style={{ backgroundImage: `url(${card.link})` }}/>
+                    <button className = "places__delete-button"></button>
+                    <div className="places__title-section">
+                      <h2 className="places__name">{card.name}</h2>
+                      <div className = "places__heart">
+                        <button className="places__heart-button" aria-label="like" type="button"></button>
+                        <div className = "places__heart-count">{card.likes}</div>
+                      </div>
+                    </div>
+                    </li>
+                  </>
+                ))}
+           
+
             </ul>
           </section>
         </main>

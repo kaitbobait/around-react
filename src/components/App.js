@@ -32,6 +32,8 @@ function App() {
     setisEditAvatarPopupOpen(true);
   }
 
+  const [isSelected, setIsSelected] = React.useState(false);
+
   function handleCardClick() {
     //add later
   }
@@ -50,7 +52,7 @@ function App() {
     setisisAddPlacePopupOpen(false);
   }
 
-  
+
 
 
   return (

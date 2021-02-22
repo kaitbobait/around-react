@@ -62,7 +62,7 @@ function Main(props) {
                       <h2 className="places__name">{card.name}</h2>
                       <div className = "places__heart">
                         <button className="places__heart-button" aria-label="like" type="button"></button>
-                        <div className = "places__heart-count">{card.likes}</div>
+                        <div className = "places__heart-count">{card.likes.length}</div>
                       </div>
                     </div>
                     </li>

@@ -5,6 +5,8 @@ import Header from './Header.js';
 import Main from './Main.js';
 import Footer from './Footer.js';
 import PopupWithForm from './PopupWithForm.js';
+import ImagePopup from './ImagePopup.js';
+import Card from './Card.js';
 
 
 function App() {
@@ -32,24 +34,23 @@ function App() {
     setisEditAvatarPopupOpen(true);
   }
 
-  const [isSelected, setIsSelected] = React.useState(false);
 
-  function handleCardClick() {
-    //add later
+  const [selectedCard, setSelectedCard] = React.useState(false);
+  
+  function handleCardClick(card) {
+    //should add which image address in img tag to popup
+    setSelectedCard(card);
+    
   }
   
   // const [isPopupOpen, setisPopupOpen] = React.useState(true);
   function closeAllPopups(evt) {
-    // if(evt.target.classList.contains('popup_open')) {
-    //   evt.closest('popup_open').close();
-    // }
-    if (evt.key === "Escape") {
-      evt.closest('popup_open').close();
-    };
+    
     // setisPopupOpen(false);
     setisEditProfilePopupOpen(false);
     setisEditAvatarPopupOpen(false);
     setisisAddPlacePopupOpen(false);
+    setSelectedCard(false);
   }
 
 
@@ -96,75 +97,12 @@ function App() {
         <PopupWithForm name="delete-places" title="Are you sure?" onClose={closeAllPopups}>
         </PopupWithForm>
 
+        {/* <ImagePopup card={selectedCard}  onClose={closeAllPopups} /> */}
+          
+
+        {/* <Card onCardClick={handleCardClick} /> */}
 
 
-        {/* Image Popup - doesn't work yet
-        <PopupWithForm name="image-popup">
-          <div className="popup_container_image-text">
-            <img className = "popup__image" />
-            <h3 className ="popup__image-title"></h3>
-          </div>
-        </PopupWithForm> */}
-
-        
-       
-        
-        {/* <div className="popup popup_edit-profile">
-          <div className="popup__container">
-            <button className="popup__close-button popup__close-button_profile" aria-label="Close" type="button"></button>
-            <h2 className="popup__intro">Edit profile</h2>
-            <form className="form popup__form popup__form-profile" action="#" noValidate >
-              <input className="popup__input popup__input_text_name" id="input_text_name" type="text" name="name" placeholder="name" value="name" minLength="2" maxLength="40" required />
-              <span className="popup__input-error" id="input_text_name-error"></span>
-              <input className="popup__input popup__input_text_title" id="input_text_title" type="text" name="about" placeholder="Occupation" value="about" minLength="2" maxLength="200" required />
-              <span className="popup__input-error" id="input_text_title-error"></span>
-              <button className="popup__save-button" type="submit">Save</button>
-            </form>
-          </div>
-        </div> */}
-        {/* <div className="popup popup_edit-places">
-          <div className="popup__container">
-            <button className="popup__close-button popup__close-button_places" aria-label="Close" type="button"></button>
-            <h2 className="popup__intro">New Place</h2>
-            <form className="form popup__form popup__form-places" action="#" noValidate>
-              <input className="popup__input popup__input_text_image-title" id="popup__input_text_image-title" type="text" name="name" placeholder="Title" minLength = "2" maxLength = "30" required />
-              <span className="popup__input-error" id="popup__input_text_image-title-error"></span>
-              <input className="popup__input popup__input_text_image" id="popup__input_text_image" type="url" name="link" placeholder="Image link" minLength = "" maxLength = "" required />
-              <span className="popup__input-error" id="popup__input_text_image-error"></span>
-              <button className="popup__save-button" type="submit">Save</button>
-            </form>
-          </div>
-        </div> */}
-
-          {/* <div className = "popup popup_open_image popup_image-large">
-            <div className = "popup__container_image">
-              <button className="popup__close-button popup__close-button_images" aria-label="Close" type="button"></button>
-              <div className="popup_container_image-text">
-                <img className = "popup__image" />
-                <h3 className ="popup__image-title"></h3>
-              </div>
-            </div>
-          </div> */}
-
-        {/* <div className = "popup popup__edit-avatar">
-          <div className="popup__container">
-            <button className="popup__close-button popup__close-button_avatar" aria-label="Close" type="button"></button>
-            <h2 className="popup__intro">Change profile picture</h2>
-            <form className="form popup__form popup__form-avatar" action="#" noValidate>
-              <input className="popup__input popup__input_avatar" id="popup__input_avatar" type="url" name="link" placeholder="Image link" minLength = "" maxLength = "" required />
-              <span className="popup__input-error" id="popup__input_avatar-error"></span>
-              <button className="popup__save-button" type="submit">Save</button>
-            </form>
-          </div>
-        </div> */}
-
-        {/* <div className = "popup popup__delete">
-          <div className = "popup__container">
-            <button className = "popup__close-button popup__close-button_delete"></button>
-            <h2 className = "popup__delete_header">Are you sure?</h2>
-            <button className = "popup__save-button popup__save-button_delete">Yes</button>
-          </div>
-        </div> */}
       
         <template id = "place-template">
           <li className="places__item">

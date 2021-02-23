@@ -1,6 +1,7 @@
 
 import React from 'react';
 import api from '../utils/api.js';
+import Card from './Card.js';
 
 
 function Main(props) {
@@ -51,10 +52,11 @@ function Main(props) {
           
           <section className="places">
             <ul className="places__list">
-              
+            {/* <Card onCardClick={props.onCardClick} /> */}
                 {cards.map((card, i) => (
                   
                   <>
+                    
                     <li className="places__item" key={i}>
                     <img className="places__img" style={{ backgroundImage: `url(${card.link})` }}/>
                     <button className = "places__delete-button"></button>

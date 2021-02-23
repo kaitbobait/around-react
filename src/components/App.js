@@ -39,7 +39,7 @@ function App() {
   
   function handleCardClick(cardInfo) {
     //should add which image address in img tag to popup
-    setSelectedCard(cardInfo.link);
+    setSelectedCard(cardInfo);
     
   }
   
@@ -57,7 +57,7 @@ function App() {
 
 
   return (
-    <div class="page">
+    <div className="page">
       <div className="page__content">
         < Header />
         < Main 
@@ -73,9 +73,9 @@ function App() {
 
         {/* Profile Edit Popup */}
         <PopupWithForm name="profile-edit" title="Edit Profile" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}>
-          <input className="popup__input popup__input_text_name" id="input_text_name" type="text" name="profile-edit" placeholder="name" value="name" minLength="2" maxLength="40" required />
+          <input className="popup__input popup__input_text_name" id="input_text_name" type="text" name="profile-edit" placeholder="name" minLength="2" maxLength="40" required />
           <span className="popup__input-error" id="input_text_name-error"></span>
-          <input className="popup__input popup__input_text_title" id="input_text_title" type="text" name="profile-edit" placeholder="Occupation" value="about" minLength="2" maxLength="200" required />
+          <input className="popup__input popup__input_text_title" id="input_text_title" type="text" name="profile-edit" placeholder="Occupation" minLength="2" maxLength="200" required />
           <span className="popup__input-error" id="input_text_title-error"></span>
         </PopupWithForm>
 
@@ -97,7 +97,7 @@ function App() {
         <PopupWithForm name="delete-places" title="Are you sure?" onClose={closeAllPopups}>
         </PopupWithForm>
 
-        <ImagePopup card={selectedCard} isOpen={selectedCard} onClose={closeAllPopups} />
+        <ImagePopup cardInfo={selectedCard} card={selectedCard.link} isOpen={selectedCard} onClose={closeAllPopups} />
           
 
       </div>

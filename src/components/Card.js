@@ -4,8 +4,8 @@ function Card(props) {
   
 
   return (
-    <li className="places__item" key={props.key}>
-                    <img className="places__img" src={props.card.link} onClick={() => {props.onCardClick(props.card)}} />
+    <li className="places__item">
+                    <img className="places__img" src={props.card.link} onClick={() => {props.onCardClick(props.card)}} alt={props.card.name} />
                     <button className = "places__delete-button"></button>
                     <div className="places__title-section">
                       <h2 className="places__name">{props.card.name}</h2>

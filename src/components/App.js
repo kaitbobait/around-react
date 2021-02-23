@@ -39,7 +39,7 @@ function App() {
   
   function handleCardClick(cardInfo) {
     //should add which image address in img tag to popup
-    setSelectedCard(cardInfo);
+    setSelectedCard(cardInfo.link);
     
   }
   

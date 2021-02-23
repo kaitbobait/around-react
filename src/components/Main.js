@@ -58,7 +58,7 @@ function Main(props) {
                   <>
                     
                     <li className="places__item" key={i}>
-                    <img className="places__img" style={{ backgroundImage: `url(${card.link})` }} onClick={props.onCardClick} />
+                    <img className="places__img" style={{ backgroundImage: `url(${card.link})` }} onClick={() => {props.onCardClick(props.card)}} />
                     <button className = "places__delete-button"></button>
                     <div className="places__title-section">
                       <h2 className="places__name">{card.name}</h2>

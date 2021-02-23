@@ -18,6 +18,9 @@ function Main(props) {
         setUserDescription(res.about);
         setUserAvatar(res.avatar);
       })
+      .catch(err => {
+        console.log(err);
+      });
     }, [])
 
   
@@ -25,10 +28,11 @@ function Main(props) {
         
           api.getInitialCards()
             .then((res) => {
-              console.log(res);
-              setCards([...cards, ...res]);
-            
+              setCards(res);
           })
+            .catch(err => {
+              console.log(err);
+            });
         
         }, []);
       
@@ -52,8 +56,8 @@ function Main(props) {
           
           <section className="places">
             <ul className="places__list">
-                {cards.map((card, i) => (
-                  <Card card={card} onCardClick={props.onCardClick} />
+                {cards.map((card) => (
+                  <Card card={card} key={card._id} onCardClick={props.onCardClick} />
                 ))}
            
             </ul>

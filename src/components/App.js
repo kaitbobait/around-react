@@ -37,9 +37,9 @@ function App() {
 
   const [selectedCard, setSelectedCard] = React.useState(false);
   
-  function handleCardClick(card) {
+  function handleCardClick() {
     //should add which image address in img tag to popup
-    setSelectedCard(card);
+    setSelectedCard();
     
   }
   

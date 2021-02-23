@@ -52,26 +52,10 @@ function Main(props) {
           
           <section className="places">
             <ul className="places__list">
-            {/* <Card onCardClick={props.onCardClick} /> */}
                 {cards.map((card, i) => (
-                  
-                  <>
-                    
-                    <li className="places__item" key={i}>
-                    <img className="places__img" style={{ backgroundImage: `url(${card.link})` }} onClick={() => {props.onCardClick(card)}} />
-                    <button className = "places__delete-button"></button>
-                    <div className="places__title-section">
-                      <h2 className="places__name">{card.name}</h2>
-                      <div className = "places__heart">
-                        <button className="places__heart-button" aria-label="like" type="button"></button>
-                        <div className = "places__heart-count">{card.likes.length}</div>
-                      </div>
-                    </div>
-                    </li>
-                  </>
+                  <Card card={card} key={i} onCardClick={props.onCardClick} />
                 ))}
            
-
             </ul>
           </section>
         </main>

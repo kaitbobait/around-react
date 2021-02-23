@@ -97,27 +97,9 @@ function App() {
         <PopupWithForm name="delete-places" title="Are you sure?" onClose={closeAllPopups}>
         </PopupWithForm>
 
-        {/* <ImagePopup card={selectedCard}  onClose={closeAllPopups} /> */}
+        <ImagePopup card={selectedCard} isOpen={selectedCard} onClose={closeAllPopups} />
           
 
-        {/* <Card onCardClick={handleCardClick} /> */}
-
-
-      
-        <template id = "place-template">
-          <li className="places__item">
-            <img className="places__img" />
-            <button className = "places__delete-button"></button>
-            <div className="places__title-section">
-              <h2 className="places__name"></h2>
-              <div className = "places__heart">
-                <button className="places__heart-button" aria-label="like" type="button"></button>
-                <div className = "places__heart-count"></div>
-              </div>
-            </div>
-          </li>
-        </template>
-        {/* <!-- <script type = "module" src="scripts/index.js"></script> --> */}
       </div>
     </div>
   );

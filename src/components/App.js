@@ -7,9 +7,15 @@ import Footer from './Footer.js';
 import PopupWithForm from './PopupWithForm.js';
 import ImagePopup from './ImagePopup.js';
 import Card from './Card.js';
+import {CurrentUserContext} from '../contexts/CurrentUserContext.js';
+import Api from '../utils/api.js';
 
 
 function App() {
+
+  // when mounted, userInfo will be updated with value
+  const [currentUser, setCurrentUser] = React.useState(Api.getUserInfo().catch(err => {console.log(err)}));
+  
 
   const [isEditProfilePopupOpen, setisEditProfilePopupOpen] = React.useState(false);
 
@@ -57,51 +63,53 @@ function App() {
 
 
   return (
-    <div className="page">
-      <div className="page__content">
-        < Header />
-        < Main 
-            onEditProfile={handleEditProfileClick}
-            onAddPlace={handleAddPlaceClick}
-            onEditAvatar={handleEditAvatarClick}
-            onCardClick={handleCardClick}
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="page">
+        <div className="page__content">
+          < Header />
+          < Main 
+              onEditProfile={handleEditProfileClick}
+              onAddPlace={handleAddPlaceClick}
+              onEditAvatar={handleEditAvatarClick}
+              onCardClick={handleCardClick}
+            />
+          < Footer />
+          <PopupWithForm
+            onClose={closeAllPopups}
           />
-        < Footer />
-        <PopupWithForm
-          onClose={closeAllPopups}
-        />
 
-        {/* Profile Edit Popup */}
-        <PopupWithForm name="profile-edit" title="Edit Profile" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}>
-          <input className="popup__input popup__input_text_name" id="input_text_name" type="text" name="profile-edit" placeholder="name" minLength="2" maxLength="40" required />
-          <span className="popup__input-error" id="input_text_name-error"></span>
-          <input className="popup__input popup__input_text_title" id="input_text_title" type="text" name="profile-edit" placeholder="Occupation" minLength="2" maxLength="200" required />
-          <span className="popup__input-error" id="input_text_title-error"></span>
-        </PopupWithForm>
+          {/* Profile Edit Popup */}
+          <PopupWithForm name="profile-edit" title="Edit Profile" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}>
+            <input className="popup__input popup__input_text_name" id="input_text_name" type="text" name="profile-edit" placeholder="name" minLength="2" maxLength="40" required />
+            <span className="popup__input-error" id="input_text_name-error"></span>
+            <input className="popup__input popup__input_text_title" id="input_text_title" type="text" name="profile-edit" placeholder="Occupation" minLength="2" maxLength="200" required />
+            <span className="popup__input-error" id="input_text_title-error"></span>
+          </PopupWithForm>
 
-        {/* Add Places Popup */}
-        <PopupWithForm name="places-edit" title="New Place" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
-          <input className="popup__input popup__input_text_image-title" id="popup__input_text_image-title" type="text" name="places-edit" placeholder="Title" minLength = "2" maxLength = "30" required />
-          <span className="popup__input-error" id="popup__input_text_image-title-error"></span>
-          <input className="popup__input popup__input_text_image" id="popup__input_text_image" type="url" name="places-edit" placeholder="Image link" minLength = "" maxLength = "" required />
-          <span className="popup__input-error" id="popup__input_text_image-error"></span>
-        </PopupWithForm>
-        
-        {/* Edit Avatar Popup */}
-        <PopupWithForm name="avatar-edit" title="Change profile picture" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
-          <input className="popup__input popup__input_avatar" id="popup__input_avatar" type="url" name="avatar-edit" placeholder="Image link" minLength = "" maxLength = "" required />
-          <span className="popup__input-error" id="popup__input_avatar-error"></span>
-        </PopupWithForm>
-
-        {/* Delete Popup  - doesn't work yet - need cards*/}
-        <PopupWithForm name="delete-places" title="Are you sure?" onClose={closeAllPopups}>
-        </PopupWithForm>
-
-        <ImagePopup cardInfo={selectedCard} card={selectedCard.link} isOpen={selectedCard} onClose={closeAllPopups} />
+          {/* Add Places Popup */}
+          <PopupWithForm name="places-edit" title="New Place" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
+            <input className="popup__input popup__input_text_image-title" id="popup__input_text_image-title" type="text" name="places-edit" placeholder="Title" minLength = "2" maxLength = "30" required />
+            <span className="popup__input-error" id="popup__input_text_image-title-error"></span>
+            <input className="popup__input popup__input_text_image" id="popup__input_text_image" type="url" name="places-edit" placeholder="Image link" minLength = "" maxLength = "" required />
+            <span className="popup__input-error" id="popup__input_text_image-error"></span>
+          </PopupWithForm>
           
+          {/* Edit Avatar Popup */}
+          <PopupWithForm name="avatar-edit" title="Change profile picture" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
+            <input className="popup__input popup__input_avatar" id="popup__input_avatar" type="url" name="avatar-edit" placeholder="Image link" minLength = "" maxLength = "" required />
+            <span className="popup__input-error" id="popup__input_avatar-error"></span>
+          </PopupWithForm>
 
+          {/* Delete Popup  - doesn't work yet - need cards*/}
+          <PopupWithForm name="delete-places" title="Are you sure?" onClose={closeAllPopups}>
+          </PopupWithForm>
+
+          <ImagePopup cardInfo={selectedCard} card={selectedCard.link} isOpen={selectedCard} onClose={closeAllPopups} />
+            
+
+        </div>
       </div>
-    </div>
+    </CurrentUserContext.Provider>
   );
 }
 

@@ -42,7 +42,6 @@ function Main(props) {
             </div>
             <button className="profile__add" aria-label="add" type="button" onClick={props.onAddPlace}></button>
           </section>
-          
           <section className="places">
             <ul className="places__list">
                 {cards.map((card) => (

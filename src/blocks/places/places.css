@@ -8,7 +8,8 @@
 @import url('__heart-button/places__heart-button.css');
 @import url('__heart-button_active/places__heart-button_active.css');
 @import url('__heart-count/places__heart-count.css');
-@import url('__delete-button/places__delete-button.css');
+@import url('__delete-button/places__delete-button_visible.css');
+@import url('__delete-button/places__delete-button_hidden.css');
 
 
 .places {

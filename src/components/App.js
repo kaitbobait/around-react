@@ -14,7 +14,7 @@ import Api from '../utils/api.js';
 function App() {
 
   // when mounted, userInfo will be updated with value
-  const [currentUser, setCurrentUser] = React.useState(Api.getUserInfo().catch(err => {console.log(err)}));
+  const [currentUser, setCurrentUser] = React.useState(Api.getUserInfo().then((res) => {setCurrentUser(res)}).catch(err => {console.log(err)}));
   
 
   const [isEditProfilePopupOpen, setisEditProfilePopupOpen] = React.useState(false);

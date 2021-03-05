@@ -10,7 +10,6 @@ function Main(props) {
   const [cards, setCards] = React.useState([]);
 
   const currentUser = React.useContext(CurrentUserContext);
-  console.log(currentUser);
 
   
       React.useEffect(() => {

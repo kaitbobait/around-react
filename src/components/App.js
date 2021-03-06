@@ -80,7 +80,7 @@ function App() {
             onCardClick={handleCardClick}
           />
           < Footer />
-          {/* <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} /> */}
+          <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
 
           <PopupWithForm
             onClose={closeAllPopups}

@@ -30,12 +30,12 @@ function Main(props) {
   function handleCardDelete(card) {
 
     // Check to see if you own the card
-    const isOwn = card.owner._id === currentUser._id;
+    // const isOwn = card.owner._id === currentUser._id;
 
     api.deleteCard(card._id)
       .then((deletedCard) => {
         const newCards = cards.map((item) => item.owner._id === currentUser._id ? deletedCard : item);
-
+        
         // Update the card state
         setCards(newCards);
       })

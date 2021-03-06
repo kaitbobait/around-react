@@ -122,13 +122,13 @@ class Api {
   }
 
   changeLikeCardStatus(cardId, isLiked) {
-    console.log(arguments);
+    
     let callMethod;
     if(!isLiked) {
-      let callMethod = "PUT";
+      callMethod = "PUT";
         
     } else {
-        let callMethod = "DELETE";
+        callMethod = "DELETE";
       }
     
     return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
@@ -150,49 +150,9 @@ class Api {
       });
   }
 
-  // addLike(cardId) {
-  //   return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
-  //     method: "PUT",
-  //     headers: {
-  //       authorization: this._authorize
-        
-  //     }
-  //   })
-  //     .then(res => {
-  //       if (res.ok) {
-  //         return res.json();
-  //       }
-  //       // if server returns an error, reject the promise
-  //       return Promise.reject(`Error: ${res.status}`);
-  //     })
-  //     // if there is an error, log it
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // }
-
-  // removeLike(cardId) {
-  //   return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
-  //     method: "DELETE",
-  //     headers: {
-  //       authorization: this._authorize
-        
-  //     }
-  //   })
-  //     .then(res => {
-  //       if (res.ok) {
-  //         return res.json();
-  //       }
-  //       // if server returns an error, reject the promise
-  //       return Promise.reject(`Error: ${res.status}`);
-  //     })
-  //     // if there is an error, log it
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // }
 
   deleteCard(cardId) {
+    console.log(arguments);
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
       headers: {

@@ -37,52 +37,7 @@ Have fun with JavaScript!
 
 ### To Do List:
 
-## Setting up Popups
-
-# setting up the popup event handlers
-* How to get to work with document...?
-
-# Move common popup component
-* Use for the following Popups:
-- Edit Profile
-- New Place
-- Update profile picture
-- Are you sure? 
-* All common markup should be placed inside the new component
-* only titles and the form identifiers (in the form of strings) should be passed from outside
-the component
-* Add the corresponding TITLE and NAME props, then substitute their values in JSX
-* to correctly substitude NAME into the CSS class of the container user this syntax: 
-className={`popup popup_type_${props.name}`}  
-* So as above, I need to change the name of some of the HTML CODE to match the new name structure
-* The NAME props will be used for the name of the CSS class container AND the NAME attribute of the form tag
-* will need to update NAME attributes on forms
-
-# Move the ImagePopup component
-* This component has no props or nested content yet
-* Transfer the added event handlers from the Main component to the App component by: 
-* using the new props: onEditProfile, onAddPlace, and onEditAvatar
-* This will allow those event handlers to still be called from the Main component.
-
-**These state variables are responsible for the visibility of three popups should also appear in the App component**
-* isEditProfilePopupOpen
-* isAddPlacePopupOpen
-* isEditAvatarPopupOpen
-
-**Replace the imperative code in the event handlers with code that will change the values of the corresponding state varaible**
-* set them to TRUE
-
-**Add  the isOpen prop to the PopupWithForm component**
-* The CSS class responsible for the popup visibility will be set in JSX depending on the isOpen prop
-
-**GOAL: For Popups to open again, but this time they will be controlled by state variables, which is the declarative approach**
-
-**Close Popups**
-* Repeat previous steps, but this time to make the popups close
-* The new onClose prop of the PopupWithForm component and its handler will help you. 
-* The handler should be inside the App and should be called closeAllPopups()
-* Closes with the close button but not with ESC key or click on background
-
+## 
 
 
 

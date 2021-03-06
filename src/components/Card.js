@@ -21,6 +21,13 @@ function Card(props) {
   const cardLikeButtonClassName = (`${isLiked ? 'places__heart-button places__heart-button_active' : 'places__heart-button'}`);
 
 
+  //says onCardLike is not a function, when click on the heart button
+  function handleLikeClick(card) {
+    props.onCardLike(card);
+    
+  }
+
+
   return (
     <li className="places__item">
                     <img className="places__img" src={props.card.link} onClick={() => {props.onCardClick(props.card)}} alt={props.card.name} />
@@ -28,7 +35,13 @@ function Card(props) {
                     <div className="places__title-section">
                       <h2 className="places__name">{props.card.name}</h2>
                       <div className = "places__heart">
-                        <button className={`${cardLikeButtonClassName}`} aria-label="like" type="button"></button>
+                        <button 
+                          className={`${cardLikeButtonClassName}`} 
+                          onClick={() => {
+                            handleLikeClick(props.card);
+                          }} 
+                          aria-label="like" 
+                          type="button"></button>
                         <div className = "places__heart-count">{props.card.likes.length}</div>
                       </div>
                     </div>

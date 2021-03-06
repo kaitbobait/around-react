@@ -1,4 +1,5 @@
 
-places__delete-button_hidden {
+.places__delete-button_hidden {
   display: none;
+  opacity: 0;
 }

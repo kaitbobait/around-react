@@ -121,7 +121,8 @@ class Api {
     });
   }
 
-  changeLikeCardStatus({cardId, isLiked}) {
+  changeLikeCardStatus(cardId, isLiked) {
+    console.log(arguments);
     let callMethod;
     if(!isLiked) {
       let callMethod = "PUT";
@@ -129,7 +130,7 @@ class Api {
     } else {
         let callMethod = "DELETE";
       }
-
+    
     return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
       method: callMethod,
       headers: {

@@ -14,7 +14,7 @@
   opacity: 1;
 }
 
-.places__delete-button:hover {
+.places__delete-button_visible:hover {
   opacity: 60%;
   cursor: pointer;
 }

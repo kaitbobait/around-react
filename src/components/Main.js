@@ -25,6 +25,20 @@ function Main(props) {
         setCards(newCards);
       })
   }
+
+  // not tested if works yet, can't make my own card to test
+  function handleCardDelete(card) {
+
+    // Check to see if you own the card
+    const isOwn =  card.owner._id === currentUser._id;
+    api.deleteCard(card._id)
+      .then((deletedCard) => {
+        const newCards = cards.map((item) => item.owner._id === currentUser._id ? deletedCard : item);
+
+        // Update the card state
+        setCards(newCards);
+      })
+  }
   
       React.useEffect(() => {
         
@@ -59,7 +73,7 @@ function Main(props) {
             <ul className="places__list">
                 {cards.map((card) => (
                   <Card 
-                    card={card} 
+                    card={card}
                     key={card._id} 
                     onCardClick={() => {
                       props.onCardClick(card);
@@ -67,6 +81,9 @@ function Main(props) {
                     onCardLike={() => {
                       handleCardLike(card);
                     }}  
+                    onCardDelete={() => {
+                      handleCardDelete(card);
+                    }}
                   />
                 ))}
            

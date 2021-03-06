@@ -27,11 +27,15 @@ function Card(props) {
     
   }
 
+  function handleDeleteClick(card) {
+    props.onCardDelete(card);
+  }
+
 
   return (
     <li className="places__item">
                     <img className="places__img" src={props.card.link} onClick={() => {props.onCardClick(props.card)}} alt={props.card.name} />
-                    <button className = {`${cardDeleteButtonClassName}`}></button>
+                    <button className = {`${cardDeleteButtonClassName}`} onClick={() => {handleDeleteClick(props.card)}} ></button>
                     <div className="places__title-section">
                       <h2 className="places__name">{props.card.name}</h2>
                       <div className = "places__heart">

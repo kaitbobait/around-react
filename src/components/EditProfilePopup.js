@@ -12,6 +12,7 @@ function EditProfilePopup(props) {
 
   // After loading the current user from the API
   // their data will be used in managed components.
+  // why when commented out, it takes out the values in the input field
   React.useEffect(() => {
     setName(currentUser.name);
     setAbout(currentUser.about);

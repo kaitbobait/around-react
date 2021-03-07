@@ -75,6 +75,13 @@ function App() {
     setisEditAvatarPopupOpen(false);
     setisisAddPlacePopupOpen(false);
     setSelectedCard(false);
+
+    api.getUserInfo()
+    .then((res) => {
+     setCurrentUser(res);
+    })
+   
+   
   }
 
   

@@ -10,6 +10,7 @@ import Card from './Card.js';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 import Api from '../utils/api.js';
 import EditProfilePopup from './EditProfilePopup.js';
+import api from '../utils/api.js';
 
 
 function App() {
@@ -20,6 +21,17 @@ function App() {
   React.useEffect(() => {
     Api.getUserInfo().then((data) => { setCurrentUser(data) }).catch(err => { console.log(err) })
   }, []);
+
+  function handleUpdateUser(newInfo) {
+    api.editProfile(newInfo)
+      .then((res) => {
+        setCurrentUser(res);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
 
 
 
@@ -52,7 +64,7 @@ function App() {
   function handleCardClick(cardInfo) {
     //should add which image address in img tag to popup
     setSelectedCard(cardInfo);
-
+    closeAllPopups();
   }
 
   // const [isPopupOpen, setisPopupOpen] = React.useState(true);
@@ -65,6 +77,7 @@ function App() {
     setSelectedCard(false);
   }
 
+  
 
 
 
@@ -80,7 +93,7 @@ function App() {
             onCardClick={handleCardClick}
           />
           < Footer />
-          <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
+          <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
 
           <PopupWithForm
             onClose={closeAllPopups}

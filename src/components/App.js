@@ -72,6 +72,17 @@ function App() {
       })
   }
 
+  function handleAddPlace(card){
+    api.addCard()
+      .then((data) => {
+        setCards([data, ...cards]);
+        
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
   /* User info */
   function handleUpdateUser(newInfo) {
     api.editProfile(newInfo)
@@ -143,7 +154,7 @@ function App() {
         setCurrentUser(res);
       })
 
-
+    
   }
 
 
@@ -169,7 +180,7 @@ function App() {
           < Footer />
           <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
           <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
-          <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
+          <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlace} />
           <PopupWithForm
             onClose={closeAllPopups}
           />

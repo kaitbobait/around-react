@@ -11,6 +11,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 import Api from '../utils/api.js';
 import EditProfilePopup from './EditProfilePopup.js';
 import EditAvatarPopup from './EditAvatarPopup.js';
+import AddPlacePopup from './AddPlacePopup.js';
 import api from '../utils/api.js';
 
 
@@ -168,18 +169,11 @@ function App() {
           < Footer />
           <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
           <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
-
+          <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
           <PopupWithForm
             onClose={closeAllPopups}
           />
-
-          {/* Add Places Popup */}
-          <PopupWithForm name="places-edit" title="New Place" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
-            <input className="popup__input popup__input_text_image-title" id="popup__input_text_image-title" type="text" name="places-edit" placeholder="Title" minLength="2" maxLength="30" required />
-            <span className="popup__input-error" id="popup__input_text_image-title-error"></span>
-            <input className="popup__input popup__input_text_image" id="popup__input_text_image" type="url" name="places-edit" placeholder="Image link" minLength="" maxLength="" required />
-            <span className="popup__input-error" id="popup__input_text_image-error"></span>
-          </PopupWithForm>
+          
 
           {/* Delete Popup  - doesn't work yet - need cards*/}
           <PopupWithForm name="delete-places" title="Are you sure?" onClose={closeAllPopups}>

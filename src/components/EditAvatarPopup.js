@@ -22,11 +22,9 @@ function EditAvatarPopup(props) {
   function handleSubmit(evt) {
     // Prevent the browser from navigating to the form address
     evt.preventDefault();
-
     // Pass the values of the managed components to the external handler
-    props.onUpdateAvatar({
-      avatar: avatarRef.current.value
-    });
+    
+    props.onUpdateAvatar(avatarRef.current.value);
   }
 
   return(

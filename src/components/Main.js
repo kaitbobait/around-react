@@ -58,8 +58,9 @@ function Main(props) {
   return (
     <main className="main">
       <section className="profile">
-        <div className="profile__img" style={{ backgroundImage: `url(${currentUser.avatar})` }}></div>
+        <div className="profile__img" style={{ backgroundImage: `url(${currentUser.avatar})` }}>
         <button className="profile__img-edit" aria-label="edit-picture" type="button" onClick={props.onEditAvatar}></button>
+        </div>
         <div className="profile__description">
           <div className="profile__description-top">
             <h1 className="profile__name">{currentUser.name}</h1>

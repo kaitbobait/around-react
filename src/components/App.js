@@ -23,6 +23,55 @@ function App() {
     Api.getUserInfo().then((data) => { setCurrentUser(data) }).catch(err => { console.log(err) })
   }, []);
 
+
+  /* Card info */
+
+  const [cards, setCards] = React.useState([]);
+
+  // request initial cards api, then change cards state to new value
+  React.useEffect(() => {
+
+    api.getInitialCards()
+      .then((res) => {
+        setCards(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
+  }, []);
+
+  function handleCardLike(card) {
+    // Check one more time if this card was already liked
+    const isLiked = card.likes.some(i => i._id === currentUser._id);
+
+    // Send a request to the API and getting the updated card data
+    api.changeLikeCardStatus(card._id, isLiked)
+      .then((newCard) => {
+        // Create a new array based on the existing one and put a new card into it
+        const newCards = cards.map((item) => item._id === card._id ? newCard : item);
+
+        // Update the state
+        setCards(newCards);
+      })
+  }
+
+  // cannot read property _id of undefined, deletes card on refresh
+  function handleCardDelete(card) {
+
+    // Check to see if you own the card
+    // const isOwn = card.owner._id === currentUser._id;
+
+    api.deleteCard(card._id)
+      .then((deletedCard) => {
+        const newCards = cards.map((item) => item.owner._id === currentUser._id ? deletedCard : item);
+
+        // Update the card state
+        setCards(newCards);
+      })
+  }
+
+  /* User info */
   function handleUpdateUser(newInfo) {
     api.editProfile(newInfo)
       .then((res) => {
@@ -89,14 +138,14 @@ function App() {
     setSelectedCard(false);
 
     api.getUserInfo()
-    .then((res) => {
-     setCurrentUser(res);
-    })
-   
-   
+      .then((res) => {
+        setCurrentUser(res);
+      })
+
+
   }
 
-  
+
 
 
 
@@ -110,10 +159,15 @@ function App() {
             onAddPlace={handleAddPlaceClick}
             onEditAvatar={handleEditAvatarClick}
             onCardClick={handleCardClick}
+            cards={cards}
+            onCardLike={handleCardLike} //why did the parameter not pass through when like this: onCardLike={()=> {handleCardLike()}}
+            onCardDelete={handleCardDelete}
+
           />
+            
           < Footer />
           <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
-          <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} /> 
+          <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
 
           <PopupWithForm
             onClose={closeAllPopups}
@@ -126,7 +180,7 @@ function App() {
             <input className="popup__input popup__input_text_image" id="popup__input_text_image" type="url" name="places-edit" placeholder="Image link" minLength="" maxLength="" required />
             <span className="popup__input-error" id="popup__input_text_image-error"></span>
           </PopupWithForm>
-          
+
           {/* Delete Popup  - doesn't work yet - need cards*/}
           <PopupWithForm name="delete-places" title="Are you sure?" onClose={closeAllPopups}>
           </PopupWithForm>

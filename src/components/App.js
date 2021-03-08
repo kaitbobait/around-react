@@ -10,6 +10,7 @@ import Card from './Card.js';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 import Api from '../utils/api.js';
 import EditProfilePopup from './EditProfilePopup.js';
+import EditAvatarPopup from './EditAvatarPopup.js';
 import api from '../utils/api.js';
 
 
@@ -24,6 +25,17 @@ function App() {
 
   function handleUpdateUser(newInfo) {
     api.editProfile(newInfo)
+      .then((res) => {
+        setCurrentUser(res);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  function handleUpdateAvatar(newInfo) {
+    api.editAvatar(newInfo)
       .then((res) => {
         setCurrentUser(res);
         closeAllPopups();
@@ -101,6 +113,7 @@ function App() {
           />
           < Footer />
           <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
+          <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} /> 
 
           <PopupWithForm
             onClose={closeAllPopups}
@@ -113,13 +126,7 @@ function App() {
             <input className="popup__input popup__input_text_image" id="popup__input_text_image" type="url" name="places-edit" placeholder="Image link" minLength="" maxLength="" required />
             <span className="popup__input-error" id="popup__input_text_image-error"></span>
           </PopupWithForm>
-
-          {/* Edit Avatar Popup */}
-          <PopupWithForm name="avatar-edit" title="Change profile picture" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
-            <input className="popup__input popup__input_avatar" id="popup__input_avatar" type="url" name="avatar-edit" placeholder="Image link" minLength="" maxLength="" required />
-            <span className="popup__input-error" id="popup__input_avatar-error"></span>
-          </PopupWithForm>
-
+          
           {/* Delete Popup  - doesn't work yet - need cards*/}
           <PopupWithForm name="delete-places" title="Are you sure?" onClose={closeAllPopups}>
           </PopupWithForm>

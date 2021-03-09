@@ -158,10 +158,10 @@ function App() {
     setisisAddPlacePopupOpen(false);
     setSelectedCard(false);
 
-    // api.getUserInfo()
-    //   .then((res) => {
-    //     setCurrentUser(res);
-    //   })
+    api.getUserInfo()
+      .then((res) => {
+        setCurrentUser(res);
+      })
 
     
   }

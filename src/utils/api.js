@@ -21,7 +21,6 @@ class Api {
     })
       .then(res => {
         if (res.ok) {
-          console.log('hello');
           return res.json();
         }
         // if server returns an error, reject the promise

@@ -6,7 +6,6 @@ import api from '../utils/api.js';
 
 function AddPlacePopup(props) {
 
-  const currentUser = React.useContext(CurrentUserContext);
 
   const [cardTitle, setCardTitle] = React.useState("");
   const [cardImage, setCardImage] = React.useState("");
@@ -22,7 +21,10 @@ function AddPlacePopup(props) {
   function handleSubmit(evt) {
 
     evt.preventDefault();
-    // props.onAddPlace(...something)
+    props.onAddPlace({
+      name: cardTitle,
+      link: cardImage
+    });
     
   }
 

@@ -77,10 +77,10 @@ function App() {
   }
 
   function handleAddPlace(card){
-    api.addCard()
-      .then((data) => {
-        setCards([data, ...cards]);
-        
+    api.addCard(card)
+      .then((card) => {
+        setCards([card, ...cards]);
+        closeAllPopups();
       })
       .catch((err) => {
         console.log(err);

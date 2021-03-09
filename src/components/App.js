@@ -55,6 +55,9 @@ function App() {
         // Update the state
         setCards(newCards);
       })
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
   // cannot read property _id of undefined, deletes card on refresh
@@ -73,6 +76,9 @@ function App() {
 
         // Update the card state
         setCards(filteredCards);
+      })
+      .catch((err) => {
+        console.log(err);
       })
   }
 
@@ -141,7 +147,6 @@ function App() {
   function handleCardClick(cardInfo) {
     //should add which image address in img tag to popup
     setSelectedCard(cardInfo);
-    closeAllPopups();
   }
 
   // const [isPopupOpen, setisPopupOpen] = React.useState(true);

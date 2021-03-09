@@ -65,10 +65,14 @@ function App() {
 
     api.deleteCard(card._id)
       .then((deletedCard) => {
-        const newCards = cards.map((item) => item.owner._id === currentUser._id ? deletedCard : item);
+        // const newCards = cards.map((item) => item.owner._id === currentUser._id ? deletedCard : item);
+        const oldCards = [...cards];
+        const filteredCards = oldCards.filter(
+          (oldCard) => oldCard._id !== card._id
+        );
 
         // Update the card state
-        setCards(newCards);
+        setCards(filteredCards);
       })
   }
 

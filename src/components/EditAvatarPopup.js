@@ -15,10 +15,6 @@ function EditAvatarPopup(props) {
 
   const avatarRef = React.useRef(); //returns an object
 
-  function handleLinkChange(evt) {
-    setImageLink(evt.target.value);
-  }
-
   function handleSubmit(evt) {
     // Prevent the browser from navigating to the form address
     evt.preventDefault();
@@ -29,7 +25,7 @@ function EditAvatarPopup(props) {
 
   return(
     <PopupWithForm name="avatar-edit" title="Change profile picture" isOpen={props.isOpen} onClose={props.onClose} onSubmit={handleSubmit} >
-            <input className="popup__input popup__input_avatar" id="popup__input_avatar" value={imageLink} onChange={handleLinkChange} ref={avatarRef} type="url" name="avatar-edit" placeholder="Image link" minLength="" maxLength="" required />
+            <input className="popup__input popup__input_avatar" id="popup__input_avatar"  ref={avatarRef} type="url" name="avatar-edit" placeholder="Image link" minLength="" maxLength="" required />
             <span className="popup__input-error" id="popup__input_avatar-error"></span>
           </PopupWithForm>
 

@@ -1,5 +1,9 @@
 
 import React from 'react';
+import { Route, Switch, Redirect, useHistory, withRouter} from "react-router-dom";
+
+import ProtectedRoute from './ProtectedRoute.js';
+
 import '../index.css';
 import Header from './Header.js';
 import Main from './Main.js';
@@ -13,6 +17,8 @@ import EditProfilePopup from './EditProfilePopup.js';
 import EditAvatarPopup from './EditAvatarPopup.js';
 import AddPlacePopup from './AddPlacePopup.js';
 import api from '../utils/api.js';
+
+
 
 
 function App() {
@@ -166,46 +172,48 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <ProtectedRoute>
-      <div className="page">
-        <div className="page__content">
-          < Header />
-          < Main
-            onEditProfile={handleEditProfileClick}
-            onAddPlace={handleAddPlaceClick}
-            onEditAvatar={handleEditAvatarClick}
-            onCardClick={handleCardClick}
-            cards={cards}
-            onCardLike={handleCardLike} //why did the parameter not pass through when like this: onCardLike={()=> {handleCardLike()}}
-            onCardDelete={handleCardDelete}
-
-          />
-            
-          < Footer />
-          <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
-          <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
-          <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlace} />
-          <PopupWithForm
-            onClose={closeAllPopups}
-          />
-          
-
-          {/* Delete Popup  - doesn't work yet - need cards*/}
-          <PopupWithForm name="delete-places" title="Are you sure?" onClose={closeAllPopups}>
-          </PopupWithForm>
-
-          <ImagePopup cardInfo={selectedCard} card={selectedCard.link} isOpen={selectedCard} onClose={closeAllPopups} />
-
-
-        </div>
-      </div>
-    
-      </ProtectedRoute>
       <Switch>
+        <ProtectedRoute>
+        <div className="page">
+          <div className="page__content">
+            < Header />
+            < Main
+              onEditProfile={handleEditProfileClick}
+              onAddPlace={handleAddPlaceClick}
+              onEditAvatar={handleEditAvatarClick}
+              onCardClick={handleCardClick}
+              cards={cards}
+              onCardLike={handleCardLike} //why did the parameter not pass through when like this: onCardLike={()=> {handleCardLike()}}
+              onCardDelete={handleCardDelete}
+
+            />
+              
+            < Footer />
+            <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
+            <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
+            <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlace} />
+            <PopupWithForm
+              onClose={closeAllPopups}
+            />
+            
+
+            {/* Delete Popup  - doesn't work yet - need cards*/}
+            <PopupWithForm name="delete-places" title="Are you sure?" onClose={closeAllPopups}>
+            </PopupWithForm>
+
+            <ImagePopup cardInfo={selectedCard} card={selectedCard.link} isOpen={selectedCard} onClose={closeAllPopups} />
+
+
+          </div>
+        </div>
+      
+        </ProtectedRoute>
+      
         <Route exact path = '/'>
           {isLoggedIn ? <Redirect to = "/main" /> : <Redirect to = "/signin" />}
         </Route>
         <Route path = "/signin">
+          
         </Route>
         <Route path = "/signup">
         </Route>

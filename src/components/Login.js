@@ -2,6 +2,7 @@
 //the component for user authorization with the necessary state variables
 
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 import PopupWithForm from './PopupWithForm.js';
 
 class Login extends React.Component {
@@ -29,7 +30,9 @@ class Login extends React.Component {
 
   render(){
     return(
-      <PopupWithForm name="profile-edit" title="Edit Profile" isOpen={props.isOpen} onClose={props.onClose} onSubmit={handleSubmit}>
+
+      
+      <PopupWithForm name="signup" title="Login" onSubmit={handleSubmit}>
       <input className="popup__input popup__input_text_name" id="input_text_name" value={name} onChange={handleNameChange} type="text" name="profile-edit" placeholder="name" minLength="2" maxLength="40" required />
       <span className="popup__input-error" id="input_text_name-error"></span>
       <input className="popup__input popup__input_text_title" id="input_text_title" value={about} onChange={handleAboutChange} type="text" name="profile-edit" placeholder="Occupation" minLength="2" maxLength="200" required />
@@ -57,4 +60,6 @@ class Login extends React.Component {
  }
 
  */
+
+ export default withRouter(Login);
  

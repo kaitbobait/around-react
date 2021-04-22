@@ -158,20 +158,15 @@ function App() {
     setisisAddPlacePopupOpen(false);
     setSelectedCard(false);
 
-    // api.getUserInfo()
-    //   .then((res) => {
-    //     setCurrentUser(res);
-    //   })
-
-    
   }
-
+  const [isloggedIn, setIsLoggedIn] = React.useState(false);
 
 
 
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
+      <ProtectedRoute>
       <div className="page">
         <div className="page__content">
           < Header />
@@ -204,6 +199,17 @@ function App() {
 
         </div>
       </div>
+    
+      </ProtectedRoute>
+      <Switch>
+        <Route exact path = '/'>
+          {isLoggedIn ? <Redirect to = "/main" /> : <Redirect to = "/signin" />}
+        </Route>
+        <Route path = "/signin">
+        </Route>
+        <Route path = "/signup">
+        </Route>
+      </Switch>
     </CurrentUserContext.Provider>
   );
 }

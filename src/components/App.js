@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Route, Switch, Redirect, useHistory, withRouter} from "react-router-dom";
+import { Route, Switch, Redirect, useHistory, withRouter} from 'react-router-dom';
 
 import ProtectedRoute from './ProtectedRoute.js';
 
@@ -165,7 +165,7 @@ function App() {
     setSelectedCard(false);
 
   }
-  const [isloggedIn, setIsLoggedIn] = React.useState(false);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
 
 
@@ -206,8 +206,8 @@ function App() {
 
           </div>
         </div>
-      
         </ProtectedRoute>
+        
       
         <Route exact path = '/'>
           {isLoggedIn ? <Redirect to = "/main" /> : <Redirect to = "/signin" />}
@@ -217,6 +217,7 @@ function App() {
         </Route>
         <Route path = "/signup">
         </Route>
+        
       </Switch>
     </CurrentUserContext.Provider>
   );

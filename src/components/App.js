@@ -3,6 +3,7 @@ import React from 'react';
 import { Route, Switch, Redirect, useHistory, withRouter} from 'react-router-dom';
 
 import ProtectedRoute from './ProtectedRoute.js';
+import Login from './Login.js';
 
 import '../index.css';
 import Header from './Header.js';
@@ -172,8 +173,9 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
+      <Header />
       <Switch>
-        <ProtectedRoute path='/main' isLoggedIn={isLoggedIn} component={Header, Main, EditProfilePopup, EditAvatarPopup, ImagePopup, PopupWithForm}>
+        <ProtectedRoute path='/main' isLoggedIn={isLoggedIn} component={Main, EditProfilePopup, EditAvatarPopup, ImagePopup, PopupWithForm}>
         <div className="page">
           <div className="page__content">
             < Header />
@@ -210,10 +212,10 @@ function App() {
         
       
         <Route exact path = '/'>
-          {isLoggedIn ? <Redirect to = "/main" /> : <Redirect to = "/signin" />}
+          {isLoggedIn ? <Redirect to = "/main" /> : <Redirect to = "/login" />}
         </Route>
         <Route path = "/login">
-          
+          <Login />
         </Route>
         <Route path = "/register">
         </Route>

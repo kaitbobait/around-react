@@ -30,12 +30,12 @@ class Login extends React.Component {
 
   render(){
     return(
-      <div>
-        <h2></h2>
-        <form>
-          <input></input>
-          <input></input>
-          <button></button>
+      <div className = "page page__content signIn-page">
+        <h2 className = "signIn-page_title" style={{"color": "white"}}>Login</h2>
+        <form className="signIn-page_form">
+          <input className ="signIn-page_input"></input>
+          <input className ="signIn-page_input"></input>
+          <button className="signIn-page_submit"></button>
         </form>
       </div>
 

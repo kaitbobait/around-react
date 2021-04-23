@@ -30,14 +30,16 @@ class Login extends React.Component {
 
   render(){
     return(
+      <div>
+        <h2></h2>
+        <form>
+          <input></input>
+          <input></input>
+          <button></button>
+        </form>
+      </div>
 
-      
-      <PopupWithForm name="signup" title="Login" onSubmit={handleSubmit}>
-      <input className="popup__input popup__input_text_name" id="input_text_name" value={name} onChange={handleNameChange} type="text" name="profile-edit" placeholder="name" minLength="2" maxLength="40" required />
-      <span className="popup__input-error" id="input_text_name-error"></span>
-      <input className="popup__input popup__input_text_title" id="input_text_title" value={about} onChange={handleAboutChange} type="text" name="profile-edit" placeholder="Occupation" minLength="2" maxLength="200" required />
-      <span className="popup__input-error" id="input_text_title-error"></span>
-    </PopupWithForm>
+
     )
   }
 }
@@ -47,15 +49,12 @@ class Login extends React.Component {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-  //cannot use currentUser
-   React.useEffect(() => {
-    setName(currentUser.name);
-    setAbout(currentUser.about);
-  }, []);
+  function handleUsernameChange(evt) {
+    setUserName(evt.target.value);
+  }
 
-  function handleChange(evt) {
-    const {name, value} = evt.target;
-
+  function handlePasswordChange(evt){
+    setPassword(evt.target.value);
   }
  }
 

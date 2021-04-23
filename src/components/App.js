@@ -173,7 +173,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <Switch>
-        <ProtectedRoute>
+        <ProtectedRoute path='/main' isLoggedIn={isLoggedIn} component={Header, Main, EditProfilePopup, EditAvatarPopup, ImagePopup, PopupWithForm}>
         <div className="page">
           <div className="page__content">
             < Header />
@@ -212,10 +212,10 @@ function App() {
         <Route exact path = '/'>
           {isLoggedIn ? <Redirect to = "/main" /> : <Redirect to = "/signin" />}
         </Route>
-        <Route path = "/signin">
+        <Route path = "/login">
           
         </Route>
-        <Route path = "/signup">
+        <Route path = "/register">
         </Route>
         
       </Switch>

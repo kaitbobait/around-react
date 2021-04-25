@@ -43,8 +43,18 @@
   margin-top: calc(216px - 30px);
   padding: 14px 84px;
   background: #FFFFFF;
-  border-radius: 2px solid #E5E5E5;;
+  border-radius: 2px;
+  opacity: 1;
 }
+
+//FIXME fix cursor so that image, renders  correct url
+.signIn-page_submit:hover {
+  opacity: 85%;
+  cursor: url('../../images/hover__pointer_png.png');
+  cursor: pointer;
+}
+
 ::placeholder {
   color: #E5E5E5;
+  
 }

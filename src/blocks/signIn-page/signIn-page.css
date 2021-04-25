@@ -1,4 +1,50 @@
 
 .signIn-page {
-  
+  display: flex;
+  flex-direction: column;
+
+}
+
+.signIn-page_container{
+  display: flex;
+  flex-direction: column;
+  width: 358px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.signIn-page_title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 24px;
+  margin: 70px auto 50px;
+}
+
+.signIn-page_form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signIn-page_input {
+  outline: none;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #CCCCCC;
+  margin-bottom: 30px;
+}
+
+.signIn-page_submit{
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 22px;
+  margin-top: calc(216px - 30px);
+  padding: 14px 84px;
+  background: #FFFFFF;
+  border-radius: 2px solid #E5E5E5;;
+}
+::placeholder {
+  color: #E5E5E5;
 }

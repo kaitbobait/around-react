@@ -38,7 +38,7 @@ class Login extends React.Component {
             <input className ="popup__input signIn-page__input" placeholder="Password" type="text"></input>
             <button className="signIn-page__submit">Log in</button>
             <p className="signIn-page__link">
-              <a className="signIn-page__link_text">
+              <a className="signIn-page__link_text" href="/register">
                 Not a member yet? Sign up here!
               </a>
             </p>

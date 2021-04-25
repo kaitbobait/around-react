@@ -174,7 +174,6 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <Header />
       <Switch>
         <ProtectedRoute path='/main' isLoggedIn={isLoggedIn} component={Main, EditProfilePopup, EditAvatarPopup, ImagePopup, PopupWithForm}>
         <div className="page">

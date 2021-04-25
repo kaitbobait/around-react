@@ -3,6 +3,7 @@
 
 import React from 'react';
 import {withRouter} from 'react-router-dom';
+import Header from './Header.js';
 import PopupWithForm from './PopupWithForm.js';
 
 class Login extends React.Component {
@@ -30,6 +31,10 @@ class Login extends React.Component {
 
   render(){
     return(
+      <>
+      <Header>
+        <a className="header__link_text" href="/register">Sign up</a>
+      </Header>
       <div className = "page page__content signIn-page">
         <div className="signIn-page__container">
           <h2 className = "signIn-page__title" style={{"color": "white"}}>Login</h2>
@@ -45,6 +50,7 @@ class Login extends React.Component {
           </form>
           </div>
       </div>
+      </>
 
 
     )
